@@ -1,15 +1,10 @@
-package com.example.myapp4;
+package com.example.myapp4.com.example.myapp.tarefa;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.BaseColumns;
 
 import androidx.annotation.Nullable;
-
-import java.util.ArrayList;
 
 public class TarefasDBHelper extends SQLiteOpenHelper {
 
@@ -47,6 +42,7 @@ public class TarefasDBHelper extends SQLiteOpenHelper {
      * @param db
      */
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL(SQL_CRIAR_TABELA);
     }
 

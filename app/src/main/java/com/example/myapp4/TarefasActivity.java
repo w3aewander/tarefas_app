@@ -1,31 +1,25 @@
 package com.example.myapp4;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.MenuCompat;
-import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.Toast;
-import android.widget.Toolbar;
+
+import com.example.myapp4.com.example.myapp.tarefa.Tarefa;
+import com.example.myapp4.com.example.myapp.tarefa.TarefasAdapter;
+import com.example.myapp4.com.example.myapp.tarefa.TarefasDB;
+import com.example.myapp4.com.example.myapp.tarefa.TarefasDBHelper;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class TarefasActivity extends AppCompatActivity {
 
@@ -33,7 +27,7 @@ public class TarefasActivity extends AppCompatActivity {
     private RecyclerView listView;
     private EditText edtTarefa;
     private static ArrayList<Tarefa> tarefas;
-    private TarefasAdapter  tarefasAdapter;
+    private TarefasAdapter tarefasAdapter;
     private CheckBox chkConcluida;
     private static int feito = 0;
     private static int naoFeito = 0;
@@ -97,7 +91,9 @@ public class TarefasActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.status:
 
-                if (item.isChecked()) {item.setChecked(false);}
+                if (item.isChecked()) {
+                    item.setChecked(false);
+                }
                 else { item.setChecked(true);}
 
                 irParaStatus(null);
@@ -112,6 +108,17 @@ public class TarefasActivity extends AppCompatActivity {
                 fechar(null);
 
                 return true;
+
+            case R.id.tela_inicial:
+                if (item.isChecked()) {item.setChecked(false);}
+                else { item.setChecked(true);}
+
+                Intent i =  new Intent(TarefasActivity.this, MainActivity.class);
+                i.putExtra("mensagem","Bem vindo de volta");
+                startActivity(i);
+
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -132,7 +139,7 @@ public class TarefasActivity extends AppCompatActivity {
             String descricao = edtTarefa.getText().toString();
 
             //Instancia a classe tarefa...
-            Tarefa tarefa = new Tarefa(descricao,Status.Fazer);
+            Tarefa tarefa = new Tarefa(descricao, Status.Fazer);
 
             db.inserirTarefa(tarefa);
 
@@ -141,8 +148,8 @@ public class TarefasActivity extends AppCompatActivity {
 
             //Exibe uma mensagem na tela a partir do contexto atual.
             Toast.makeText(v.getContext(), "Tarefa adicionada com sucesso.",Toast.LENGTH_SHORT).show();
-            tarefas = db.getTarefas();
-            tarefasAdapter.notifyDataSetChanged();
+
+            //tarefasAdapter.notifyDataSetChanged();
             this.recreate();
 
 
@@ -171,7 +178,7 @@ public class TarefasActivity extends AppCompatActivity {
         Intent i = new Intent();
 
         //Onde estou e para onde vou - qual a activity que quer iniciar.
-        i.setClass(TarefasActivity.this,StatusActivity.class);
+        i.setClass(TarefasActivity.this, StatusActivity.class);
 
         //envia a quantide de tarefas cadastradas
         i.putExtra("qtdeTarefas",tarefasAdapter.getItemCount());

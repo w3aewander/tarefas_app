@@ -1,6 +1,8 @@
-package com.example.myapp4;
+package com.example.myapp4.com.example.myapp.tarefa;
 
 import android.widget.Switch;
+
+import com.example.myapp4.Status;
 
 public class Tarefa {
 

@@ -1,4 +1,4 @@
-package com.example.myapp4;
+package com.example.myapp4.com.example.myapp.tarefa;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.myapp4.R;
 
 public class TarefasAdapterViewHolder extends RecyclerView.ViewHolder {
 

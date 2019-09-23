@@ -1,24 +1,18 @@
-package com.example.myapp4;
+package com.example.myapp4.com.example.myapp.tarefa;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.hardware.camera2.CameraManager;
-import android.net.Uri;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.Switch;
-import android.widget.Toast;
 
-import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.myapp4.R;
+import com.example.myapp4.Status;
 
 import java.util.ArrayList;
 
@@ -40,6 +34,14 @@ public class TarefasAdapter extends RecyclerView.Adapter {
     public int getItemCount() {
 
         return tarefas.size();
+    }
+
+
+    public ArrayList<Tarefa> getTarefas(){
+        ArrayList<Tarefa> tarefas = db.getTarefas();
+        notifyDataSetChanged();
+
+        return tarefas;
     }
 
     @NonNull
@@ -72,29 +74,56 @@ public class TarefasAdapter extends RecyclerView.Adapter {
         holder.status.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
+
                 final AlertDialog.Builder dialogo = new AlertDialog.Builder(v.getContext());
+
                 dialogo.setTitle("Alterar status");
+
                 dialogo.setCancelable(true);
+
                 dialogo.setIcon(R.drawable.gradientoval);
-                dialogo.setMessage("Tarefa realizada?");
-                dialogo.setPositiveButton("Sim",new DialogInterface.OnClickListener() {
 
-                            @Override
-                            public void onClick(DialogInterface dialog, int id) {
-                                tarefa.setStatus(Status.Feito);
-                                holder.status.setText(tarefa.getStatus().toString());
-                                //int d =  android.R.drawable.checkbox_off_background;
-
-                                db.atualizarTarefa(tarefa);
-                                notifyDataSetChanged();
-
-                                holder.status.setCompoundDrawablesWithIntrinsicBounds(0,0,android.R.drawable.checkbox_on_background,0);
+                //dialogo.setMessage("Tarefa realizada?");
+                dialogo.setMessage("O que deseja?");
 
 
-                            }
-                        });
 
-                dialogo.setNegativeButton("Não",null);
+                dialogo.setNegativeButton("Excluir",new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        db.excluir(tarefa.getId());
+
+
+                        holder.status.setCompoundDrawablesWithIntrinsicBounds(0,0,android.R.drawable.checkbox_on_background,0);
+                        tarefas = db.getTarefas();
+
+                        notifyDataSetChanged();
+
+
+                    }
+                });
+
+                dialogo.setPositiveButton("Atualizar",new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        tarefa.setStatus(Status.Feito);
+                        holder.status.setText(tarefa.getStatus().toString());
+                        //int d =  android.R.drawable.checkbox_off_background;
+
+                        db.atualizarTarefa(tarefa);
+                        notifyDataSetChanged();
+
+                        holder.status.setCompoundDrawablesWithIntrinsicBounds(0,0,android.R.drawable.checkbox_on_background,0);
+
+
+                    }
+                });
+
+
+                dialogo.setNeutralButton("Cancelar",null);
 
                 dialogo.show();
 
@@ -103,6 +132,5 @@ public class TarefasAdapter extends RecyclerView.Adapter {
         });
 
     }
-
 
 }

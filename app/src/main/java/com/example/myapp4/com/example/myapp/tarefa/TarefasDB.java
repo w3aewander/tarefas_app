@@ -1,4 +1,4 @@
-package com.example.myapp4;
+package com.example.myapp4.com.example.myapp.tarefa;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
 import androidx.annotation.Nullable;
+
+import com.example.myapp4.Status;
 
 import java.util.ArrayList;
 
@@ -38,10 +40,16 @@ public class TarefasDB extends TarefasDBHelper {
         values.put(TarefasDBContrato.TabTarefas.COLUNA_STATUS, t.getStatus().toString());
 
 // Insere a linha e retorna o ID do registro inserido
-        long newRowId = db.insert(TarefasDBContrato.TabTarefas.TABLE_NAME, null, values);
+        long newRowId = db.insert(
+                  TarefasDBContrato.TabTarefas.TABLE_NAME,
+                 null, values);
     }
 
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Tarefa> getTarefas(){
 
         SQLiteDatabase db = getReadableDatabase();
@@ -78,7 +86,9 @@ public class TarefasDB extends TarefasDBHelper {
 
         while ( cursor.moveToNext()){
 
-            Status status = Status.valueOf( cursor.getString(cursor.getColumnIndex(TarefasDBContrato.TabTarefas.COLUNA_STATUS)));
+            Status status = Status.valueOf( cursor.getString(
+                    cursor.getColumnIndex(TarefasDBContrato.TabTarefas.COLUNA_STATUS)));
+
             Tarefa tarefa = new Tarefa(
 
                     cursor.getLong(cursor.getColumnIndex(TarefasDBContrato.TabTarefas.COLUNA_ID)),

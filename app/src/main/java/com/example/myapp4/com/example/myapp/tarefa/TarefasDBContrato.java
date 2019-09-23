@@ -1,4 +1,4 @@
-package com.example.myapp4;
+package com.example.myapp4.com.example.myapp.tarefa;
 
 import android.provider.BaseColumns;
 
@@ -16,6 +16,7 @@ public final class TarefasDBContrato {
         public static class TabTarefas implements BaseColumns {
             public static final String TABLE_NAME = "tb_tarefas";
             public static final String COLUNA_ID = "_ID";
+
             public static final String COLUNA_DESCRICAO = "descricao";
             public static final String COLUNA_STATUS = "status";
         }

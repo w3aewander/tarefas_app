@@ -1,12 +1,9 @@
 package com.example.myapp4;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.LinearLayoutCompat;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.drawable.GradientDrawable;
-import android.icu.lang.UCharacter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -46,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Intent i = new Intent();
-                i.setClass(LoginActivity.this,TarefasActivity.class);
+                i.setClass(LoginActivity.this, TarefasActivity.class);
                 i.putExtra("mensagem","Seja bem vindo!");
                 startActivity(i);
                 pb.setVisibility(View.INVISIBLE);

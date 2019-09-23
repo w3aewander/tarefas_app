@@ -1,13 +1,9 @@
 package com.example.myapp4;
 
-import android.app.Application;
-import android.content.Context;
+import com.example.myapp4.com.example.myapp.tarefa.Tarefa;
+import com.example.myapp4.com.example.myapp.tarefa.TarefasDB;
 
 import org.junit.Test;
-
-import java.util.ArrayList;
-
-import static org.junit.Assert.*;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
