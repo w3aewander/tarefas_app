@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/ic_launcher_background"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:dividerPadding="2dp"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtId"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#DCECE4"
+                android:gravity="start|center_vertical"
+                android:padding="5dp"
+                android:shadowColor="#00CEBBBB"
+                android:text="0"
+                android:textColor="#161616"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtStatus"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#DCECE4"
+                android:gravity="start|center_vertical"
+                android:padding="5dp"
+                android:shadowColor="#00CEBBBB"
+                android:textColor="#161616"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text="Descrição da tarefa" />
+
+            <TextView
+                android:id="@+id/txtDescricao"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#DCECE4"
+                android:gravity="start|center_vertical"
+                android:padding="5dp"
+                android:shadowColor="#00CEBBBB"
+                android:text="Status da tarefa"
+                android:textColor="#161616"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Switch
+            android:id="@+id/swCocluida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:switchPadding="10dp"
+            android:text="Concluída"
+            android:textSize="24sp" />
+    </LinearLayout>
+</LinearLayout>
