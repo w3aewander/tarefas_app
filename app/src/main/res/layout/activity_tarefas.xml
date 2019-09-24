@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/ComActionBar"
-    tools:context=".TarefasActivity"
+    tools:context="com.example.main.TarefasActivity"
     tools:layout_editor_absoluteX="69dp"
 
     tools:layout_editor_absoluteY="0dp">

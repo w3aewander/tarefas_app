@@ -15,18 +15,18 @@
 
         >
 
-        <activity android:name=".CadastroActivity">
+        <activity android:name="com.example.main.CadastroActivity">
         </activity>
 
 
-        <activity android:name=".StatusActivity" />
+        <activity android:name="com.example.main.StatusActivity" />
 
-        <activity android:name=".TarefasActivity"
+        <activity android:name="com.example.main.TarefasActivity"
             android:theme="@style/ComActionBar"
         />
 
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.main.LoginActivity" />
+        <activity android:name="com.example.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
